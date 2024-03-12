@@ -1,0 +1,20 @@
+# Flutter
+pubspec.lock
+.metadata
+analysis_options.yaml
+*.iml
+*.dill
+*.stamp
+*.DS_Store
+
+flutter/**/android/
+flutter/**/ios/
+flutter/**/web/
+flutter/**/windows/
+flutter/**/macos/
+flutter/**/linux/
+flutter/**/.idea/
+flutter/**/.dart_tool/
+
+
+!flutter/**/macos/Runner/DebugProfile.entitlements
