@@ -15,7 +15,7 @@ class AppStateHolder extends StatefulWidget {
 }
 
 class AppStateHolderState extends State<AppStateHolder> {
-  CounterState _counterState = CounterState(counter: 0);
+  CounterState _counterState = CounterState(username: "tadas", counter: 0);
 
   void add() {
     int newCounter = _counterState.counter + 1;

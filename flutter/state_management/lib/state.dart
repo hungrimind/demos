@@ -2,15 +2,19 @@ import 'package:flutter/widgets.dart';
 
 class CounterState {
   CounterState({
+    required this.username,
     required this.counter,
   });
 
+  final String username;
   final int counter;
 
   CounterState copyWith({
+    String? username,
     int? counter,
   }) {
     return CounterState(
+      username: username ?? this.username,
       counter: counter ?? this.counter,
     );
   }
