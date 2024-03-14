@@ -2,7 +2,7 @@
 
 This example doesn't use any state management packages.
 
-Full Breakdown [Here](https://www.hungrimind.com/flutter/slivers)
+Full Breakdown [Here](https://www.hungrimind.com/articles/flutter-slivers-explained)
 
 # How to run this
 

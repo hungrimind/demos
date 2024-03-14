@@ -2,7 +2,7 @@
 
 This example doesn't use any state management packages.
 
-Full Breakdown [Here](https://www.hungrimind.com/flutter/state-management)
+Full Breakdown [Here](https://www.hungrimind.com/articles/flutter-state-management)
 
 # How to run this
 
