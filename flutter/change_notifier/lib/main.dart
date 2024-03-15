@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:state_management/provider.dart';
 import 'package:state_management/state.dart';
 
 void main() {
   runApp(
-    ListenableProvider(
+    Provider(
       notifier: CounterNotifier(CounterState(username: "Tadas")),
       child: const MyApp(),
     ),
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counter = ListenableProvider.of<CounterNotifier>(context);
+    final counter = Provider.of<CounterNotifier>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -47,8 +48,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            ListenableProvider.of<CounterNotifier>(context).increment(),
+        onPressed: () => Provider.of<CounterNotifier>(context).increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
