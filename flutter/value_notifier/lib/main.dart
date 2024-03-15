@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:state_management/provider.dart';
-import 'package:state_management/state.dart';
+
+import 'provider.dart';
+import 'state.dart';
 
 void main() {
   runApp(
