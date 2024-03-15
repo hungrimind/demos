@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class CounterState {
-  CounterState({
+class CounterModel {
+  CounterModel({
     required this.username,
     this.counter = 0,
   });
@@ -9,18 +9,18 @@ class CounterState {
   final String username;
   final int counter;
 
-  CounterState copyWith({
+  CounterModel copyWith({
     final String? username,
     final int? counter,
   }) {
-    return CounterState(
+    return CounterModel(
       username: username ?? this.username,
       counter: counter ?? this.counter,
     );
   }
 }
 
-class CounterNotifier extends ValueNotifier<CounterState> {
+class CounterNotifier extends ValueNotifier<CounterModel> {
   CounterNotifier(super.state);
 
   void increment() {

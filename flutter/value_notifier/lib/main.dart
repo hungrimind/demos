@@ -6,7 +6,7 @@ import 'state.dart';
 void main() {
   runApp(
     Provider(
-      notifier: CounterNotifier(CounterState(username: "Tadas")),
+      notifier: CounterNotifier(CounterModel(username: "Tadas")),
       child: const MyApp(),
     ),
   );
