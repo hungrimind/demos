@@ -1,17 +1,35 @@
 import 'package:flutter/widgets.dart';
 
-class CounterState extends ChangeNotifier {
-  CounterState({required this.username});
+class CounterState {
+  CounterState({
+    required this.username,
+    this.counter = 0,
+  });
 
-  String username;
-  int counter = 0;
+  final String username;
+  final int counter;
 
-  void increment() {
-    counter++;
-    notifyListeners();
+  CounterState copyWith({
+    final String? username,
+    final int? counter,
+  }) {
+    return CounterState(
+      username: username ?? this.username,
+      counter: counter ?? this.counter,
+    );
   }
 }
 
+class CounterNotifier extends ValueNotifier<CounterState> {
+  CounterNotifier(super.state);
+
+  void increment() {
+    value = value.copyWith(counter: value.counter + 1);
+  }
+}
+
+/// ChangeNotifier is extending [Listenable] so by using that subclass this can
+/// also be reused for other [Listenable] classes.
 class ListenableProvider<T extends Listenable> extends InheritedNotifier<T> {
   const ListenableProvider({
     super.key,

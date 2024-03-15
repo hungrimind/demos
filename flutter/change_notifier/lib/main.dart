@@ -4,7 +4,7 @@ import 'package:state_management/state.dart';
 void main() {
   runApp(
     ListenableProvider(
-      notifier: CounterState(username: "tadas"),
+      notifier: CounterNotifier(CounterState(username: "John")),
       child: const MyApp(),
     ),
   );
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counter = ListenableProvider.of<CounterState>(context);
+    final counter = ListenableProvider.of<CounterNotifier>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -37,10 +37,10 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '${counter.username} has pushed the button this many times:',
+              '${counter.value.username} has pushed the button this many times:',
             ),
             Text(
-              '${counter.counter}',
+              '${counter.value.counter}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () =>
-            ListenableProvider.of<CounterState>(context).increment(),
+            ListenableProvider.of<CounterNotifier>(context).increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
