@@ -31,9 +31,6 @@ class HomePage extends StatelessWidget {
     final counterNotifier = Provider.of<CounterNotifier>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("InheritedNotifier"),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +47,6 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => counterNotifier.increment(),
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
     );
