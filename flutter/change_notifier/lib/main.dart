@@ -4,7 +4,7 @@ import 'package:state_management/state.dart';
 void main() {
   runApp(
     ListenableProvider(
-      notifier: CounterNotifier(CounterState(username: "John")),
+      notifier: CounterNotifier(CounterState(username: "Tadas")),
       child: const MyApp(),
     ),
   );
