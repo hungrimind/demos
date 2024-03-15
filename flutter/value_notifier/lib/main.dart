@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counter = Provider.of<CounterNotifier>(context);
+    final counterNotifier = Provider.of<CounterNotifier>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -39,17 +39,17 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '${counter.value.username} has pushed the button this many times:',
+              '${counterNotifier.value.username} has pushed the button this many times:',
             ),
             Text(
-              '${counter.value.counter}',
+              '${counterNotifier.value.counter}',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Provider.of<CounterNotifier>(context).increment(),
+        onPressed: () => counterNotifier.increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
