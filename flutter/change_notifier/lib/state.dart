@@ -12,18 +12,27 @@ class CounterState extends ChangeNotifier {
   }
 }
 
-class Provider extends InheritedWidget {
-  const Provider(this.data, {Key? key, required Widget child})
-      : super(key: key, child: child);
+class ListenableProvider<T extends Listenable> extends InheritedNotifier<T> {
+  const ListenableProvider({
+    super.key,
+    required super.child,
+    required super.notifier,
+  });
 
-  final CounterState data;
+  static T of<T extends Listenable>(BuildContext context) {
+    final provider =
+        context.dependOnInheritedWidgetOfExactType<ListenableProvider<T>>();
 
-  static CounterState of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<Provider>()!.data;
-  }
+    if (provider == null) {
+      throw Exception("No Provider found in context");
+    }
 
-  @override
-  bool updateShouldNotify(Provider oldWidget) {
-    return data != oldWidget.data;
+    final notifier = provider.notifier;
+
+    if (notifier == null) {
+      throw Exception("No notifier found in Provider");
+    }
+
+    return notifier;
   }
 }
