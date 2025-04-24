@@ -7,47 +7,37 @@ class AppRouterDelegate extends RouterDelegate<String> {
     : _routerService = routerService;
 
   final RouterService _routerService;
-
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
   List<Page<dynamic>> createPages() {
     List<Page<dynamic>> pages = [];
-    for (String routeData in _routerService.navigationStack.value) {
-      if (routeData.startsWith('/books/')) {
+    final navigationStack = _routerService.navigationStack.value;
+    for (int index = 0; index < navigationStack.length; index++) {
+      final route = navigationStack[index];
+      if (route.startsWith('/books/')) {
         pages.add(
           MaterialPage(
-            key: ValueKey('Page_${routeData.hashCode}'),
-            child: BookDetailsScreen(bookId: routeData.split('/').last),
+            key: ValueKey('Page_$index'),
+            child: BookDetailsScreen(bookId: route.split('/').last),
           ),
         );
       }
-      switch (routeData) {
+      switch (route) {
         case '/':
           pages.add(
-            MaterialPage(
-              key: ValueKey('Page_${routeData.hashCode}'),
-              child: HomeScreen(),
-            ),
+            MaterialPage(key: ValueKey('Page_$index'), child: HomeScreen()),
           );
         case '/books':
           pages.add(
-            MaterialPage(
-              key: ValueKey('Page_${routeData.hashCode}'),
-              child: BooksScreen(),
-            ),
+            MaterialPage(key: ValueKey('Page_$index'), child: BooksScreen()),
           );
 
         case '/settings':
           pages.add(
-            MaterialPage(
-              key: ValueKey('Page_${routeData.hashCode}'),
-              child: SettingsScreen(),
-            ),
+            MaterialPage(key: ValueKey('Page_$index'), child: SettingsScreen()),
           );
         case '/404':
           pages.add(
-            MaterialPage(
-              key: ValueKey('Page_${routeData.hashCode}'),
-              child: UnknownScreen(),
-            ),
+            MaterialPage(key: ValueKey('Page_$index'), child: UnknownScreen()),
           );
       }
     }
@@ -57,6 +47,7 @@ class AppRouterDelegate extends RouterDelegate<String> {
   @override
   Widget build(BuildContext context) {
     return Navigator(
+      key: _navigatorKey,
       pages: createPages(),
       onDidRemovePage: (page) {
         _routerService.pop();
@@ -67,7 +58,7 @@ class AppRouterDelegate extends RouterDelegate<String> {
   @override
   Future<bool> popRoute() async {
     if (_routerService.navigationStack.value.length > 1) {
-      _routerService.pop();
+      Navigator.of(_navigatorKey.currentContext!).pop();
       return true;
     }
     return false;

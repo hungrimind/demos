@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nav2demo/core/config/route_config.dart';
 import 'package:nav2demo/core/locator.dart';
-import 'package:nav2demo/navigation/best_router.dart';
+import 'package:nav2demo/navigation/route_information_parser.dart';
+import 'package:nav2demo/navigation/router_delegate.dart';
 import 'package:nav2demo/navigation/router_service.dart';
 import 'package:nav2demo/navigation/url_strategy/url_strategy.dart';
 
@@ -20,18 +22,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late BestRouterConfig _bestRouterConfig;
+  late final RouterDelegate<Object> routerDelegate;
+  late final RouteInformationParser<Object> routeInformationParser;
 
   @override
   void initState() {
     super.initState();
-    _bestRouterConfig = BestRouterConfig(
+    routerDelegate = AppRouterDelegate(
       routerService: locator.get<RouterService>(),
     );
+    routeInformationParser = AppRouteInformationParser(routes: routes);
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(routerConfig: _bestRouterConfig);
+    return MaterialApp.router(
+      routerDelegate: routerDelegate,
+      routeInformationParser: routeInformationParser,
+    );
   }
 }

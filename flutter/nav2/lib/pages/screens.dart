@@ -79,9 +79,7 @@ class _BooksScreenState extends State<BooksScreen> {
           return ListTile(
             title: Text('Book $bookId'),
             onTap: () {
-              // Update state using typed constant
-
-              // locator.get<RouterService>().push("/books/$bookId");
+              locator.get<RouterService>().push("/books/$bookId");
             },
           );
         },
