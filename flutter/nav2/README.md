@@ -1,16 +1,17 @@
-# nav2demo
+# The Definitive Guide to Navigator 2.0 in Flutter
 
-A new Flutter project.
+![Road to Navigator 2.0](navigator2.png)
+
+This is the demo code for the article [The Definitive Guide to Navigator 2.0 in Flutter](https://www.hungrimind.com/articles/the-definitive-guide-to-navigator-2).
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+```bash
+flutter pub get
+```
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is the demo code to help explain the fundamentals of Navigator 2.0 in Flutter, if you want our full Navigator 2 system, you can check out our [Flutter Boilerplate](https://www.hungrimind.com/boilerplate/flutter).
